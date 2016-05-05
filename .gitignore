@@ -3,6 +3,11 @@
 bower_components
 node_modules
 
+# Others #
+###################
+public/
+server.js
+
 # Compiled source #
 ###################
 *.com

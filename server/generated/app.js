@@ -75,7 +75,7 @@ module.exports =
 
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this));
 
-			_this.state = { count: 0 };
+			_this.state = { count: 1 };
 			return _this;
 		}
 

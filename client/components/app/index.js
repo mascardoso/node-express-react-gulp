@@ -6,7 +6,7 @@ class App extends React.Component {
 	constructor() {
 		super();
 
-		this.state = {count: 0};
+		this.state = {count: 1};
 	}
 
 	tick() {

@@ -57,8 +57,6 @@ module.exports =
 
 	var _react2 = _interopRequireDefault(_react);
 
-	__webpack_require__(2);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -106,12 +104,6 @@ module.exports =
 /***/ function(module, exports) {
 
 	module.exports = require("react");
-
-/***/ },
-/* 2 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);

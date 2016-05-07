@@ -3,7 +3,7 @@ import express from 'express';
 import handlebars from 'express-handlebars';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import App from './generated/app';
+import App from './server/generated/app/index';
 
 const app = express();
 

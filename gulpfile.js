@@ -7,7 +7,17 @@ var rename = require("gulp-rename");
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var include = require("gulp-include");
+var browserify = require("browserify");
+var gutil = require("gulp-util");
+var source = require("vinyl-source-stream");
+var babelify = require("babelify");
+var path = require("path");
+
+const CLIENT_DIR = path.resolve(__dirname, 'client');
+const CLIENT_COMP_DIR = path.resolve(__dirname, 'client/components');
+const SERVER_DIR = path.resolve(__dirname, 'server');
+const SERVER_GEN_DIR = path.resolve(__dirname, 'server/generated');
+const PUBLIC_DIR = path.resolve(__dirname, 'public');
 
 //Runs the server
 gulp.task('start', function (cb) {
@@ -18,7 +28,7 @@ gulp.task('start', function (cb) {
 
 // Builds the server
 gulp.task('buildServer', () =>
-	gulp.src('./server/index.js')
+	gulp.src(SERVER_DIR + '/index.js')
 	.pipe(babel({
 		presets: ['es2015', 'react']
 	}))
@@ -29,31 +39,40 @@ gulp.task('buildServer', () =>
 
 // builds the components serverside
 gulp.task('buildComponentsServer', () =>
-	gulp.src('./client/components/**/*.js')
+	gulp.src(CLIENT_COMP_DIR + '/**/*.js')
 	.pipe(babel({
 		presets: ['es2015', 'react']
 	}))
-	.pipe(gulp.dest('./server/generated'))
+	.pipe(gulp.dest(SERVER_GEN_DIR))
 );
 
-
-// builds the components and clientside
-gulp.task('buildComponentsClient', () =>
-	gulp.src(['./client/*.js'])
-	.pipe(include()).on('error', console.log)
-	.pipe(babel({	presets: ['es2015', 'react']}))
-	.pipe(concat('bundle.js'))
-	// .pipe(uglify({mangle: false}))
+//builds the client minified files
+gulp.task('buildComponentsClient', function(){
+	browserify({
+		debug: true,
+    	entries: [CLIENT_DIR + '/index.js']
+	})
+    .transform(babelify.configure({
+        sourceMapRelative: CLIENT_DIR,
+        presets: ["es2015", "react"]
+    }))
+	.bundle()
+	.on('error', function(e){
+		gutil.log(e);
+	})
+	.pipe(source('bundle.js'))
 	.pipe(rename('bundle.min.js'))
-	.pipe(gulp.dest('./public'))
-);
-
-gulp.task('sass', function () {
-	return gulp.src('./client/components/**/*.scss')
-	.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-	.pipe(rename('bundle.min.css'))
-	.pipe(gulp.dest('./public'));
+	.pipe(gulp.dest(PUBLIC_DIR));
 });
 
 
+//builds sass files
+gulp.task('sass', function () {
+	return gulp.src(CLIENT_COMP_DIR + '/**/*.scss')
+	.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+	.pipe(rename('bundle.min.css'))
+	.pipe(gulp.dest(PUBLIC_DIR));
+});
+
+//build
 gulp.task('build', ['buildServer', 'buildComponentsServer', 'buildComponentsClient', 'sass']);

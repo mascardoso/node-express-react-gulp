@@ -1,12 +1,12 @@
-# node-express-react-webpack
-Proof of Concept for a relative small isomorphic app with Node, Express, React and Webpack
+# node-express-react-gulp
+Proof of Concept for a relative small isomorphic app with Node, Express, React and Gulp
 
 ## To install:
 
-> npm install -g webpack
+> npm install -g gulp
 
 > npm install
 
-> webpack
+> gulp build
 
-> node server
+> gulp start

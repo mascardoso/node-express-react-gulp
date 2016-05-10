@@ -13,6 +13,7 @@ var source = require("vinyl-source-stream");
 var babelify = require("babelify");
 var path = require("path");
 var gutil = require('gulp-util');
+var sassGlob = require('gulp-sass-glob');
 
 const CLIENT_DIR = path.resolve(__dirname, 'client');
 const CLIENT_COMP_DIR = path.resolve(__dirname, 'client/components');
@@ -69,11 +70,14 @@ gulp.task('buildComponentsClient', function(){
 
 //builds sass files
 gulp.task('sass', function () {
-	return gulp.src(CLIENT_COMP_DIR + '/**/*.scss')
-	.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-	.pipe(rename('bundle.min.css'))
-	.pipe(gulp.dest(PUBLIC_DIR));
+    return gulp
+        .src(CLIENT_COMP_DIR + '/app/App.scss')
+        .pipe(sassGlob())
+		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+		.pipe(rename('bundle.min.css'))
+        .pipe(gulp.dest(PUBLIC_DIR));
 });
+
 
 //build
 gulp.task('build', ['buildComponentsServer', 'buildComponentsClient', 'sass']);

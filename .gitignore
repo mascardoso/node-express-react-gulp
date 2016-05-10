@@ -6,6 +6,8 @@ node_modules
 # Others #
 ###################
 public/
+server.js
+server/generated
 
 # Compiled source #
 ###################

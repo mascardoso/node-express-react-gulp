@@ -12,6 +12,7 @@ var gutil = require("gulp-util");
 var source = require("vinyl-source-stream");
 var babelify = require("babelify");
 var path = require("path");
+var gutil = require('gulp-util');
 
 const CLIENT_DIR = path.resolve(__dirname, 'client');
 const CLIENT_COMP_DIR = path.resolve(__dirname, 'client/components');
@@ -22,19 +23,19 @@ const PUBLIC_DIR = path.resolve(__dirname, 'public');
 //Runs the server
 gulp.task('start', function (cb) {
 	return nodemon({
-		script: 'server.js'
+		script: 'server/server.js'
 	}).once('start', cb);
 });
 
 // Builds the server
-gulp.task('buildServer', () =>
-	gulp.src(SERVER_DIR + '/index.js')
-	.pipe(babel({
-		presets: ['es2015', 'react']
-	}))
-	.pipe(rename('server.js'))
-	.pipe(gulp.dest('.'))
-);
+// gulp.task('buildServer', () =>
+// 	gulp.src([(SERVER_DIR + '**/**/*.js'), ('!' + SERVER_DIR + '/generated/**/**/.js')])
+// 	.pipe(babel({
+// 		presets: ['es2015', 'react']
+// 	}))
+// 	// .pipe(rename('server.js'))
+// 	.pipe(gulp.dest('./build'))
+// );
 
 
 // builds the components serverside
@@ -75,4 +76,4 @@ gulp.task('sass', function () {
 });
 
 //build
-gulp.task('build', ['buildServer', 'buildComponentsServer', 'buildComponentsClient', 'sass']);
+gulp.task('build', ['buildComponentsServer', 'buildComponentsClient', 'sass']);

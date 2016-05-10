@@ -30,5 +30,4 @@ gulp.task('sass', function () {
 	require('./gulp-tasks/build-resources.js').sass(gulp, CLIENT_COMP_DIR, PUBLIC_DIR);
 });
 
-// build
 gulp.task('build', ['buildComponentsServer', 'buildComponentsClient', 'sass']);

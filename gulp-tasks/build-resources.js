@@ -7,6 +7,7 @@ var browserify = require("browserify");
 var gutil = require("gulp-util");
 var source = require("vinyl-source-stream");
 var babelify = require("babelify");
+var sassGlob = require('gulp-sass-glob');
 
 module.exports = {
 
@@ -42,10 +43,12 @@ module.exports = {
 
 	sass: function(gulp, CLIENT_COMP_DIR, PUBLIC_DIR) {
 
-		return gulp.src(CLIENT_COMP_DIR + '/**/*.scss')
+		return gulp
+        .src(CLIENT_COMP_DIR + '/app/App.scss')
+        .pipe(sassGlob())
 		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 		.pipe(rename('bundle.min.css'))
-		.pipe(gulp.dest(PUBLIC_DIR));
+        .pipe(gulp.dest(PUBLIC_DIR));
 		
 	}
 

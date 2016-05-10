@@ -1,7 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
-var path = require("path");
+var path = require('path');
 
 const CLIENT_DIR = path.resolve(__dirname, 'client');
 const CLIENT_COMP_DIR = path.resolve(__dirname, 'client/components');
@@ -34,11 +34,18 @@ gulp.task('sass', function () {
 	return stream;
 });
 
-gulp.task('build', ['buildComponentsServer', 'buildComponentsClient', 'sass']);
+// hinting javascript files
+/*gulp.task("jshint", function() {
+	var stream = require('./gulp-tasks/hinting.js').jshint(gulp, CLIENT_COMP_DIR, SERVER_DIR);
+	return stream;
+});*/
+
+
+gulp.task('build', [/*'jshint', */ 'buildComponentsServer', 'buildComponentsClient', 'sass']);
 
 gulp.task('watch', function() {
 	gulp.watch(CLIENT_COMP_DIR + '/**/**/*.scss', ['build']);
 	gulp.watch(CLIENT_COMP_DIR + '/**/**/*.js', ['build']);
 });
 
-gulp.task('default', [ 'start', 'watch' ]);
+gulp.task('default', ['start', 'watch' ]);

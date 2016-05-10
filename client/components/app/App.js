@@ -27,7 +27,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<main>
-				<Article />
+				<Article test={this.state.test}/>
 				<br />
 			  	<div onClick={this.tick}>
 			    	Clicks: {this.state.count}

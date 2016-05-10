@@ -13,7 +13,7 @@ class Article extends React.Component {
 		return (
 			<article>
 				<Heading />
-				<Content />
+				<Content test={this.props.test}/>
 				<Author />
 			</article>
 		);

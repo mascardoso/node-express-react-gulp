@@ -37,8 +37,8 @@ gulp.task('sass', function () {
 gulp.task('build', ['buildComponentsServer', 'buildComponentsClient', 'sass']);
 
 gulp.task('watch', function() {
-	gulp.watch(CLIENT_COMP_DIR + '/**/**/*.scss', ['sass']);
-	gulp.watch(CLIENT_COMP_DIR + '/**/**/*.js', ['buildComponentsServer', 'buildComponentsClient']);
+	gulp.watch(CLIENT_COMP_DIR + '/**/**/*.scss', ['build']);
+	gulp.watch(CLIENT_COMP_DIR + '/**/**/*.js', ['build']);
 });
 
 gulp.task('default', [ 'start', 'watch' ]);

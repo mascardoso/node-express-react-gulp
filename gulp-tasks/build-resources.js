@@ -14,7 +14,7 @@ module.exports = {
 	server: function(gulp, CLIENT_COMP_DIR, SERVER_GEN_DIR) {
 
 		return gulp
-			.src(CLIENT_COMP_DIR + '/**/*.js')
+			.src(CLIENT_COMP_DIR + '**/**/*.js')
 			.pipe(babel({
 				presets: ['es2015', 'react']
 			}))

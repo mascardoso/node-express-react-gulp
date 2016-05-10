@@ -15,6 +15,7 @@ class App extends React.Component {
 			url: 'https://httpbin.org/get',
 			json: true
 		}, (err, res, body) => {
+
 			this.setState({test: body.origin});
 		});
 	}

@@ -24,7 +24,7 @@ gulp.task('buildComponentsServer', function() {
 
 // builds the client minified files
 gulp.task('buildComponentsClient', function(){
-	var stream = require('./gulp-tasks/build-resources.js').client(gulp, CLIENT_DIR, SERVER_GEN_DIR);
+	var stream = require('./gulp-tasks/build-resources.js').client(gulp, CLIENT_DIR, PUBLIC_DIR);
 	return stream;
 });
 

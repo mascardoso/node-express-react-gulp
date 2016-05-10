@@ -12,22 +12,33 @@ const PUBLIC_DIR = path.resolve(__dirname, 'public');
 
 // Runs the server
 gulp.task('start', function (cb) {
-	require('./gulp-tasks/run-server.js')(gulp, cb);
+	var stream = require('./gulp-tasks/run-server.js')(gulp, cb);
+	return stream;
 });
 
 // builds the components serverside
 gulp.task('buildComponentsServer', function() {
-	require('./gulp-tasks/build-resources.js').server(gulp, CLIENT_COMP_DIR, SERVER_GEN_DIR);
+	var stream = require('./gulp-tasks/build-resources.js').server(gulp, CLIENT_COMP_DIR, SERVER_GEN_DIR);
+	return stream;
 });
 
 // builds the client minified files
 gulp.task('buildComponentsClient', function(){
-	require('./gulp-tasks/build-resources.js').client(gulp, CLIENT_DIR, SERVER_GEN_DIR);
+	var stream = require('./gulp-tasks/build-resources.js').client(gulp, CLIENT_DIR, SERVER_GEN_DIR);
+	return stream;
 });
 
 // builds sass files
 gulp.task('sass', function () {
-	require('./gulp-tasks/build-resources.js').sass(gulp, CLIENT_COMP_DIR, PUBLIC_DIR);
+	var stream = require('./gulp-tasks/build-resources.js').sass(gulp, CLIENT_COMP_DIR, PUBLIC_DIR);
+	return stream;
 });
 
 gulp.task('build', ['buildComponentsServer', 'buildComponentsClient', 'sass']);
+
+gulp.task('watch', function() {
+	gulp.watch(CLIENT_COMP_DIR + '/**/**/*.scss', ['sass']);
+	gulp.watch(CLIENT_COMP_DIR + '/**/**/*.js', ['buildComponentsServer', 'buildComponentsClient']);
+});
+
+gulp.task('default', [ 'start', 'watch' ]);

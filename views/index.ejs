@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<title>React isomorphic</title>
-	<link rel="stylesheet" href="bundle.min.css">
-</head>
-<body>
-	<div id="app"><%-body%></div>
-	<script src="bundle.min.js" async></script>
-</body>
+<html lang="nl">
+
+	<head>
+		<% include ./partials/head %>
+	</head>
+
+	<body class="container">
+
+		<header>
+			<% include ./partials/header %>
+		</header>
+
+		<main>
+			<div id="app"><%-body%></div>
+			<script src="bundle.min.js" async></script>
+		</main>
+
+		<footer>
+			<% include ./partials/footer %>
+		</footer>
+		
+	</body>
+
 </html>

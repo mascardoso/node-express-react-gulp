@@ -8,7 +8,7 @@ class Content extends React.Component {
 
 	render() {
 		return (
-			<div><p>This is pure content CIAO {this.props.test}</p></div>
+			<div><p>This is pure content {this.props.test}</p></div>
 		);
 	}
 }

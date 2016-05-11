@@ -28,12 +28,13 @@ class App extends React.Component {
 		return (
 			<main>
 				<Article test={this.state.test}/>
+
 				<br />
-			  	<div onClick={this.tick}>
-			    	Clicks: {this.state.count}
-			  	</div>
-		  		<p> Let the fun begin!!! </p>
-		  		<p> Do i get an IP from an API? {this.state.test}</p>
+
+		  	<div onClick={this.tick}>
+		    	Clicks: {this.state.count}
+		  	</div>
+	  		<p> Json data? {this.state.test}</p>
 			</main>
 		);
 	}

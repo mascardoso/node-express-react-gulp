@@ -5,7 +5,6 @@ var ReactDOMServer = require('react-dom/server');
 
 var Element = React.createElement(require('../generated/app/App.js').default, null);
 
-//console.log(require('../generated/app/index.js').default);
 
 Router.route('/')
 

@@ -1,3 +1,6 @@
-h1{
-	font-size:20px;
+hgroup{
+	h1, h2{
+		color: $blue;
+		text-align: left;
+	}
 }

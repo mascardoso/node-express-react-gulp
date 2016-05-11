@@ -1,0 +1,10 @@
+.article{
+	&__tags{
+		a{
+			color: $blue;
+			padding: 0px 10px;
+			margin: 0px 10px;
+			border: 1px solid $blue;
+		}
+	}
+}

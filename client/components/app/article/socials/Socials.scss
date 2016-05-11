@@ -1,0 +1,14 @@
+.article{
+	&__socials{
+		a{
+			border-radius: 50%;
+			border-color: $blue;
+			background-color: $white;
+			height: 50px;
+			width: 50px;
+			line-height: 50px;
+			display: inline-block;
+			text-align: center;
+		}
+	}
+}

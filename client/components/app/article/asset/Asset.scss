@@ -1,0 +1,25 @@
+.article{
+	&__asset{
+		figure{
+			width: 100%;
+			position: relative;
+			img{
+				width: 100%;
+			}
+
+			figcaption{
+				position: absolute;
+				bottom: 20px;
+				right: 20px;
+				color: $white;
+			}
+		}
+
+		div{
+			width: 100%;
+			background-color: $white;
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+	}
+}

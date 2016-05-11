@@ -1,5 +1,6 @@
-@import "Variables.scss";
-@import "Fonts.scss";
+@import "Global";
+@import "Variables";
+@import "Fonts";
 
 html {
   background-color: $white;

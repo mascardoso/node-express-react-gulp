@@ -1,0 +1,14 @@
+.article{
+	&__author{
+
+		&__name{
+			font-weight: bold;
+			color: $blue;
+			float: left;
+		}
+
+		&__date{
+			float: right;
+		}
+	}
+}

@@ -12,11 +12,13 @@ class App extends React.Component {
 
 	componentDidMount(){
 		Request({
-			url: 'https://httpbin.org/get',
+			url: 'http://dev.hmc.nl/node/1?_format=json',
 			json: true
 		}, (err, res, body) => {
 
-			this.setState({test: body.origin});
+			console.log(err, res, body);
+
+			this.setState({test: body.nid[0].value});
 		});
 	}
 

@@ -26,7 +26,7 @@ module.exports = {
 
 		return browserify({
 				debug: true,
-		  	entries: [CLIENT_DIR + '/index.js']
+		  		entries: [CLIENT_DIR + '/index.js']
 			})
 	    .transform(babelify.configure({
 	        sourceMapRelative: CLIENT_DIR,
